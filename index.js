@@ -28,9 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter1 has a function within a function. It uses closure. It also has its count variable inside the function whereas counter2 has neither of those.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter1 uses a closure. It has a function within the first function. It's a higher order function with a callback function.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * counter1 would be good when you 
  *
 */
 
@@ -56,11 +62,11 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * 3);
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +82,14 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, innings){
+  return {
+    'Home': callback() * innings,
+    'Away': callback() * innings,
+  }
 }
+
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -104,8 +113,27 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, numberOfInnings) {
+  let count = 0;
+  for (let i = 0; i < numberOfInnings; i++){
+    count++;
+    console.log(`inning ${count}: ${getInningScore}`);
+  }
+  function final(getInningScore){
+    return getInningScore * 9;
+  }
+  return `Final Score: ${final}`;
 }
+
+function inningAgain(){
+  return Math.floor(Math.random() * 3);
+}
+
+function getInningScore(inning, inningAgain){
+  return `${inning} - ${inningAgain}`;
+}
+
+console.log(scoreboard(getInningScore(inning(), inningAgain()), 9));
+
 
 
