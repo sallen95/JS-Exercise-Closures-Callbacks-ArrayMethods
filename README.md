@@ -44,6 +44,9 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is when you have functions within a function to have them gain access to the outer function's scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -65,8 +68,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+It is in the return statement. Because it is a function embedded within the higher order function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+"Dan rolled a" is always the same. The thing that could change is the number. It could be between 1 and 6.
+
 c. What is the lexical scope of `newRoll`? 
+
+it is inside the innermost function of personalDice().
 
 ### Task 3 - Stretch Goals
 
